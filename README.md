@@ -1,20 +1,16 @@
 # invisible-watermark
 invisible-watermark is a **python** library and command line tool for creating invisible watermark over image.(aka. **blink image watermark**, **digital image watermark**). The algorithm doesn't reply on the original image.
 
-Note that this library is still experimental and it doesn't support GPU acceleration, carefully deploy it on the production environment.
+**Note that** this library is still experimental and it doesn't support GPU acceleration, carefully deploy it on the production environment. The default method **dwtDCT**(one variant of frequency methods) is ready for on-the-fly embedding, the other methods are too slow on a CPU only environment.
 
-
-supported algorithms:
-* [Discrete wavelet transform](https://en.wikipedia.org/wiki/Discrete_wavelet_transform) + [Discrete cosine transform](https://en.wikipedia.org/wiki/Discrete_cosine_transform) frequency embedding algorithm variants.
-* [RivaGAN](https://github.com/DAI-Lab/RivaGAN), a deep-learning model trained from Hollywood2 movie clips dataset.
-
-
-But only the default method (dwtDCT, ~300ms 1080P image) is suitable for on-the-fly embedding. The other methods are too slow on a CPU only environment.
 
 ## Supported Algorithms
 * **frequency methods**: [algorithm process and test result](https://github.com/ShieldMnt/invisible-watermark/wiki/Frequency-Methods)
 * **rivaGan**: encoder/decoder model with Attention mechanism + embed watermark bits into vector.
-
+background:
+> [Discrete wavelet transform](https://en.wikipedia.org/wiki/Discrete_wavelet_transform)
+> [Discrete cosine transform](https://en.wikipedia.org/wiki/Discrete_cosine_transform).
+> [RivaGAN](https://github.com/DAI-Lab/RivaGAN), a deep-learning model trained from Hollywood2 movie clips dataset.
 
 ## How to install
 `pip install invisible-watermark`
