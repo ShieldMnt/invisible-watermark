@@ -118,7 +118,8 @@ class WatermarkDecoder(object):
         return str(uuid.UUID(bytes=bstr))
 
     def reconstruct_bits(self, bits):
-        return ''.join([str(b) for b in bits])
+        #return ''.join([str(b) for b in bits])
+        return bits
 
     def reconstruct_b16(self, bits):
         bstr = self.reconstruct_bytes(bits)

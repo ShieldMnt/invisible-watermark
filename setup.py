@@ -6,7 +6,7 @@ with open('README.md', 'r') as f:
 
 setuptools.setup(
   name='invisible-watermark',
-  version='0.1.2',
+  version='0.1.3',
   author='Qingquan Wang',
   author_email='wangqq1103@gmail.com',
   description='The library for creating and decoding invisible image watermarks',
