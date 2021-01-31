@@ -7,10 +7,11 @@ invisible-watermark is a **python** library and command line tool for creating i
 ## Supported Algorithms
 * **frequency methods**: [algorithm process and test result](https://github.com/ShieldMnt/invisible-watermark/wiki/Frequency-Methods)
 * **rivaGan**: encoder/decoder model with Attention mechanism + embed watermark bits into vector.
-background:
-> [Discrete wavelet transform](https://en.wikipedia.org/wiki/Discrete_wavelet_transform)
-> [Discrete cosine transform](https://en.wikipedia.org/wiki/Discrete_cosine_transform).
-> [RivaGAN](https://github.com/DAI-Lab/RivaGAN), a deep-learning model trained from Hollywood2 movie clips dataset.
+
+> background:
+> * [Discrete wavelet transform](https://en.wikipedia.org/wiki/Discrete_wavelet_transform)
+> * [Discrete cosine transform](https://en.wikipedia.org/wiki/Discrete_cosine_transform).
+> * [RivaGAN](https://github.com/DAI-Lab/RivaGAN), a deep-learning model trained from Hollywood2 movie clips dataset.
 
 ## How to install
 `pip install invisible-watermark`
