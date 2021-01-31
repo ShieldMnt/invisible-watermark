@@ -76,6 +76,7 @@ class WatermarkEncoder(object):
         (r, c, channels) = cv2Image.shape
         if r*c < 256*256:
             raise RuntimeError('image too small, should be larger than 256x256')
+
         if method == 'dwtDct':
             embed = EmbedMaxDct(self._watermarks, wmLen=self._wmLen, **configs)
             return embed.encode(cv2Image)
@@ -149,6 +150,7 @@ class WatermarkDecoder(object):
         (r, c, channels) = cv2Image.shape
         if r*c < 256*256:
             raise RuntimeError('image too small, should be larger than 256x256')
+
         bits = []
         if method == 'dwtDct':
             embed = EmbedMaxDct(watermarks=[], wmLen=self._wmLen, **configs)

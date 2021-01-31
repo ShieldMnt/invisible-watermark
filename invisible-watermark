@@ -2,6 +2,10 @@
 
 """
 invisible-watermark is the utility to add hidden watermark and extract watermark from image
+
+embed watermark:  ./invisible-watermark -v -a encode -t bytes -m dwtDct -w 'hello' -o ./test_vectors/wm.png ./test_vectors/original.jpg
+
+decode watermark: ./invisible-watermark -v -a decode -t bytes -m dwtDct -l 40 ./test_vectors/wm.png
 """
 
 import argparse
@@ -24,11 +28,6 @@ pp = pprint.PrettyPrinter(indent=2)
 class CustomArgParseFormatter(
     argparse.ArgumentDefaultsHelpFormatter,
     argparse.RawDescriptionHelpFormatter):
-  """A custom formatter that combines the features of multiple base classes.
-
-  This gives us defaults for each argument in the help text, plus it preserves
-  whitespace in the description field.
-  """
   pass
 
 
@@ -37,17 +36,18 @@ def main():
     parser = argparse.ArgumentParser(description=description,
                                    formatter_class=CustomArgParseFormatter)
 
-    parser.add_argument('-a', '--action', required=True, help='encode|decode')
-    parser.add_argument('-t', '--type', default='bits', help='watermark type')
-    parser.add_argument('-m', '--method', default='maxDct', help='watermark algorithm')
-    parser.add_argument('-w', '--watermark', default='', help='watermark text')
-    parser.add_argument('-l', '--length', default=0, type=int,
-                        help='watermark length, only valid for bytes watermark')
     parser.add_argument('input',
                         help='The path of input')
+    parser.add_argument('-a', '--action', required=True, help='encode|decode')
+    parser.add_argument('-t', '--type', default='bits', help='bytes|b16|bits|uuid|ipv4')
+    parser.add_argument('-m', '--method', default='maxDct', help='dwtDct|dwtDctSvd|rivaGan')
+    parser.add_argument('-w', '--watermark', default='', help='embedded string')
+    parser.add_argument('-l', '--length', default=0, type=int,
+                        help='watermark bits length, required for bytes|b16|bits watermark')
     parser.add_argument('-o', '--output', required=False,
                         help='The path of output')
-
+    parser.add_argument('-v', '--verbose', required=False, default=False,
+                        action='store_true', help='print info')
     args = parser.parse_args()
     action = args.action
     inputFile = args.input
@@ -74,7 +74,11 @@ def main():
         else:
             wm = args.watermark
         encoder.set_watermark(wmType, wm)
+        start = time.time()
         bgr_encoded = encoder.encode(bgr, args.method)
+        if args.verbose:
+            print('watermark length:', encoder.get_length())
+            print('encode time ms:', (time.time()-start) * 1000)
         cv2.imwrite(args.output, bgr_encoded)
     elif action == 'decode':
         if args.type in ['bytes', 'bits', 'b16']:
@@ -88,7 +92,10 @@ def main():
         if args.method == 'rivaGan':
             WatermarkDecoder.loadModel()
         bgr = cv2.imread(args.input)
+        start = time.time()
         wm = decoder.decode(bgr, args.method)
+        if args.verbose:
+            print('decode time ms:', (time.time()-start) * 1000)
         if args.type in ['bytes', 'b16']:
             wm = wm.decode('utf-8')
         print(wm)
