@@ -6,13 +6,13 @@ with open('README.md', 'r') as f:
 
 setuptools.setup(
   name='invisible-watermark',
-  version='0.1.4',
+  version='0.1.5',
   author='Qingquan Wang',
   author_email='wangqq1103@gmail.com',
   description='The library for creating and decoding invisible image watermarks',
   long_description=long_description,
   long_description_content_type='text/markdown',
-  url='https://github.com/ShiedMnt/invisible-watermark',
+  url='https://github.com/ShieldMnt/invisible-watermark',
   packages=setuptools.find_packages(),
   install_requires=[
       'opencv-python>=4.1.0.25',

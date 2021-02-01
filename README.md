@@ -1,4 +1,10 @@
 # invisible-watermark
+[![PyPI](https://img.shields.io/pypi/v/invisible-watermark)](https://pypi.org/project/invisible-watermark/)
+[![License](https://img.shields.io/pypi/l/invisible-watermark.svg)](https://github.com/ShieldMnt/invisible-watermark/blob/main/LICENSE)
+![Python](https://img.shields.io/badge/python->=3.6-green.svg)
+![Platform](https://img.shields.io/badge/platform-%20linux%20-green.svg)
+[![Downloads](https://pepy.tech/badge/invisible-watermark)](https://pepy.tech/project/invisible-watermark)
+
 invisible-watermark is a **python** library and command line tool for creating invisible watermark over image.(aka. **blink image watermark**, **digital image watermark**). The algorithm doesn't reply on the original image.
 
 **Note that** this library is still experimental and it doesn't support GPU acceleration, carefully deploy it on the production environment. The default method **dwtDCT**(one variant of frequency methods) is ready for on-the-fly embedding, the other methods are too slow on a CPU only environment.
