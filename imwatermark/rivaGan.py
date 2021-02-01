@@ -10,8 +10,9 @@ class RivaWatermark(object):
     encoder = None
     decoder = None
 
-    def __init__(self, watermarks=[], wmLen=32):
+    def __init__(self, watermarks=[], wmLen=32, threshold=0.52):
         self._watermarks = watermarks
+        self._threshold = threshold
         if wmLen not in [32]:
             raise RuntimeError('rivaGan only supports 32 bits watermarks now.')
         self._data = torch.from_numpy(np.array([self._watermarks], dtype=np.float32))
@@ -58,4 +59,4 @@ class RivaWatermark(object):
         }
         outputs = RivaWatermark.decoder.run(None, inputs)
         data = outputs[0][0]
-        return np.array(data > 0.6, dtype=np.uint8)
+        return np.array(data > self._threshold, dtype=np.uint8)

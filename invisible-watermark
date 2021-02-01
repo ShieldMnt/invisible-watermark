@@ -13,7 +13,6 @@ import os
 import shutil
 import sys
 import time
-import yaml
 import uuid
 import cv2
 import base64

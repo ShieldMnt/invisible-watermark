@@ -4,16 +4,26 @@ invisible-watermark is a **python** library and command line tool for creating i
 Note that this library is still experimental and it doesn't support GPU acceleration, carefully deploy it on the production environment.
 
 
-supported algorithms:
+[supported algorithms](https://github.com/ShieldMnt/invisible-watermark#supported-algorithms)
 * [Discrete wavelet transform](https://en.wikipedia.org/wiki/Discrete_wavelet_transform) + [Discrete cosine transform](https://en.wikipedia.org/wiki/Discrete_cosine_transform) frequency embedding algorithm variants.
 * [RivaGAN](https://github.com/DAI-Lab/RivaGAN), a deep-learning model trained from Hollywood2 movie clips dataset.
 
+[speed](https://github.com/ShieldMnt/invisible-watermark#running-speed-cpu-only)
+* default embedding method ```dwtDct``` is fast and suitable for on-the-fly embedding
+* ```dwtDctSvd``` is 3x slower and ```rivaGan``` is 10x slower, for large image they are not suitable for on-the-fly embedding
 
-But only the default method (dwtDCT, ~300ms 1080P image) is suitable for on-the-fly embedding. The other methods are too slow on a CPU only environment.
+accuracy
+* The algorithm **cannot gurantee** to decode the original watermarks 100% accurately even though we don't apply any attack.
+* Known defects: Test shows all algorithms do not perform well for web page screenshots or posters with homogenous background color
 
 ## Supported Algorithms
-* **frequency methods**: [algorithm process and test result](https://github.com/ShieldMnt/invisible-watermark/wiki/Frequency-Methods)
-* **rivaGan**: encoder/decoder model with Attention mechanism + embed watermark bits into vector.
+* [**frequency methods**](https://github.com/ShieldMnt/invisible-watermark/wiki/Frequency-Methods)
+ 
+> * **dwtDct**: DWT + DCT transform, embed watermark bit into max non-trivial coefficient of block dct coefficents
+> 
+> * **dwtDctSvd**: DWT + DCT transform, SVD decomposition of each block, embed watermark bit into singular value decomposition
+
+* [**rivaGan**](https://github.com/ShieldMnt/invisible-watermark#rivagan-experimental): encoder/decoder model with Attention mechanism + embed watermark bits into vector.
 
 
 ## How to install
@@ -119,11 +129,14 @@ Methods are not robust to **resize** or aspect ratio changed **crop** but robust
 
 
 ### Running Speed (CPU Only)
-| Method | Encoding | Decoding |
-| --- | --- | --- |
-| dwtDct | 300-350ms | 150ms-200ms |
-| dwtDctSvd | 1500ms-2s | ~1s |
-| rivaGan | ~5s | 4-5s |
+| Image | Method | Encoding | Decoding |
+| --- | --- | --- | --- |
+| 1920x1080 | dwtDct | 300-350ms | 150ms-200ms |
+| 1920x1080 | dwtDctSvd | 1500ms-2s | ~1s |
+| 1920x1080 | rivaGan | ~5s | 4-5s |
+| 600x600 | dwtDct | 70ms | 60ms |
+| 600x600 | dwtDctSvd | 185ms | 320ms |
+| 600x600 | rivaGan | 1s | 600ms |
 
 ### RivaGAN Experimental
 Further, We will deliver the 64bit rivaGan model and test the performance on GPU environment.
