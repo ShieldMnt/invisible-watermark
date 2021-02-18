@@ -107,7 +107,7 @@ For better doc reading, we compress all images in this page, but the test is tak
 
 Methods are not robust to **resize** or aspect ratio changed **crop** but robust to **noise**, **color filter**, **brightness** and **jpg compress.**
 
-**rivaGan overcomes default method on crop attack.**
+**rivaGan outperforms the default method on crop attack.**
 
 **only default method is ready for on-the-fly embedding.**
 
