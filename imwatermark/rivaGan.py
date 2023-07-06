@@ -1,6 +1,5 @@
 import numpy as np
 import torch
-import onnxruntime
 import cv2
 import os
 import time
@@ -19,6 +18,14 @@ class RivaWatermark(object):
 
     @classmethod
     def loadModel(cls):
+        try:
+            import onnxruntime
+        except ImportError:
+            raise ImportError(
+                "The `RivaWatermark` class requires onnxruntime to be installed. "
+                "You can install it with pip: `pip install onnxruntime`."
+            )
+
         if RivaWatermark.encoder and RivaWatermark.decoder:
             return
         modelDir = os.path.dirname(os.path.abspath(__file__))

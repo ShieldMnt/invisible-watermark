@@ -17,8 +17,6 @@ setuptools.setup(
   install_requires=[
       'opencv-python>=4.1.0.25',
       'torch',
-      'onnx',
-      'onnxruntime',
       'Pillow>=6.0.0',
       'PyWavelets>=1.1.1',
       'numpy>=1.17.0'
