@@ -19,7 +19,7 @@ invisible-watermark is a **python** library and command line tool for creating i
 * ```dwtDctSvd``` is 3x slower and ```rivaGan``` is 10x slower, for large image they are not suitable for on-the-fly embedding
 
 accuracy
-* The algorithm **cannot gurantee** to decode the original watermarks 100% accurately even though we don't apply any attack.
+* The algorithm **cannot guarantee** to decode the original watermarks 100% accurately even though we don't apply any attack.
 * Known defects: Test shows all algorithms do not perform well for web page screenshots or posters with homogenous background color
 
 ## Supported Algorithms
