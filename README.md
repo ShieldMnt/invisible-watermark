@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/pypi/l/invisible-watermark.svg)](https://github.com/ShieldMnt/invisible-watermark/blob/main/LICENSE)
 ![Python](https://img.shields.io/badge/python->=3.6-green.svg)
 ![Platform](https://img.shields.io/badge/platform-%20linux%20-green.svg)
-[![Downloads](https://pepy.tech/badge/invisible-watermark)](https://pepy.tech/project/invisible-watermark)
+[![Downloads](https://static.pepy.tech/badge/invisible-watermark)](https://pepy.tech/project/invisible-watermark) 
 
 invisible-watermark is a **python** library and command line tool for creating invisible watermark over image (a.k.a. **blink image watermark**, **digital image watermark**). The algorithm doesn't rely on the original image.
 
