@@ -15,7 +15,7 @@ setuptools.setup(
   url='https://github.com/ShieldMnt/invisible-watermark',
   packages=setuptools.find_packages(),
   install_requires=[
-      'opencv-python>=4.1.0.25',
+      'opencv-python-headless>=4.1.0.25',
       'torch',
       'Pillow>=6.0.0',
       'PyWavelets>=1.1.1',
