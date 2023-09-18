@@ -28,11 +28,14 @@ class RivaWatermark(object):
 
         if RivaWatermark.encoder and RivaWatermark.decoder:
             return
+        # Define the priority order for the execution providers
+        # prefer CUDA Execution Provider over CPU Execution Provider.
+        EP_list = ['CUDAExecutionProvider', 'CPUExecutionProvider']
         modelDir = os.path.dirname(os.path.abspath(__file__))
         RivaWatermark.encoder = onnxruntime.InferenceSession(
-            os.path.join(modelDir, 'rivagan_encoder.onnx'))
+            os.path.join(modelDir, 'rivagan_encoder.onnx'), providers=EP_list)
         RivaWatermark.decoder = onnxruntime.InferenceSession(
-            os.path.join(modelDir, 'rivagan_decoder.onnx'))
+            os.path.join(modelDir, 'rivagan_decoder.onnx'), providers=EP_list)
 
     def encode(self, frame):
         if not RivaWatermark.encoder:
