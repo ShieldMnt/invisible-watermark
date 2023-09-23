@@ -20,12 +20,12 @@ invisible-watermark is a **python** library and command line tool for creating i
 
 accuracy
 * The algorithm **cannot guarantee** to decode the original watermarks 100% accurately even though we don't apply any attack.
-* Known defects: Test shows all algorithms do not perform well for web page screenshots or posters with homogenous background color
+* Known defects: Test shows all algorithms do not perform well for web page screenshots or posters with homogeneous background color
 
 ## Supported Algorithms
 * [**frequency methods**](https://github.com/ShieldMnt/invisible-watermark/wiki/Frequency-Methods)
  
-> * **dwtDct**: DWT + DCT transform, embed watermark bit into max non-trivial coefficient of block dct coefficents
+> * **dwtDct**: DWT + DCT transform, embed watermark bit into max non-trivial coefficient of block dct coefficients
 > 
 > * **dwtDctSvd**: DWT + DCT transform, SVD decomposition of each block, embed watermark bit into singular value decomposition
 
@@ -134,7 +134,7 @@ Methods are not robust to **resize** or aspect ratio changed **crop** but robust
 | Mask | ![wm_mask_large](https://user-images.githubusercontent.com/1647036/106387726-10de6300-6416-11eb-99c3-4a0f70f99224.png) | Pass | Pass |
 | crop 7x5 | ![wm_crop_7x5](https://user-images.githubusercontent.com/1647036/106387713-06bc6480-6416-11eb-8ae0-f64289642450.png) | Fail | Pass |
 | Resize 50% | ![wm_resize_half](https://user-images.githubusercontent.com/1647036/106387735-15a31700-6416-11eb-8589-2ffa38df2a9a.png) | Fail | Fail |
-| Rotate 30 degress | ![wm_rotate](https://user-images.githubusercontent.com/1647036/106387737-19369e00-6416-11eb-8417-05e53e11b77f.png) | Fail | Fail|
+| Rotate 30 degrees | ![wm_rotate](https://user-images.githubusercontent.com/1647036/106387737-19369e00-6416-11eb-8417-05e53e11b77f.png) | Fail | Fail|
 
 
 
